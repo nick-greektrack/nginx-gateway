@@ -42,7 +42,7 @@ printf "search FQDN: %s\n\n" "$fqdn"
 
 printf "--------- GENERATED ROUTES.CONF ------------\n"
 cat /etc/nginx/routes.conf
-printf "--------- EOF GENERTED ROUTES.CONF ---------\n"
+printf "--------- EOF GENERATED ROUTES.CONF ---------\n"
 
 printf "> nginx.conf and routes.conf configuration files loaded!\n\n"
 
