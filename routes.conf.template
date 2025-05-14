@@ -1,10 +1,10 @@
 # Liveness probe
-location /server/up {
+location /service/up {
     return 204;
 }
 
 # Health probe
-location /server/health {
+location /service/health {
     return 204;
 }
 
