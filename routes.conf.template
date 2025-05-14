@@ -1,3 +1,13 @@
+# Liveness probe
+location /server/up {
+    return 200;
+}
+
+# Health probe
+location /server/health {
+    return 200;
+}
+
 # Forward to API Service => /api/*
 location ~* ^/api/(.*)$ {
     proxy_pass http://$SERVICE_API_HOST$request_uri;
