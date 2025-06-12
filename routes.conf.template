@@ -11,9 +11,9 @@ location /service/health {
 ## Temporarily commenting these out until services are in place ##
 
 # Forward to API Service => /api/*
-#location ~* ^/api/(.*)$ {
-#    proxy_pass http://$SERVICE_API_HOST$request_uri;
-#}
+location ~* ^/api/(.*)$ {
+    proxy_pass http://$SERVICE_API_HOST$request_uri;
+}
 
 # Forward to Frontend Service => /app/*
 #location ~* ^/app/(.*)$ {
