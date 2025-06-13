@@ -21,6 +21,6 @@ location ~* ^/api/(.*)$ {
 #}
 
 # Forward to Web Service => /*
-#location ~* ^/(.*)$ {
-#    proxy_pass http://$SERVICE_WEB_HOST$request_uri;
-#}
+location ~* ^/(.*)$ {
+    proxy_pass http://$SERVICE_WEB_HOST$request_uri;
+}
