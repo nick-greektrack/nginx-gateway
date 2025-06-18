@@ -36,11 +36,15 @@ http {
     gzip_proxied any;
     gzip_types text/plain
                text/css
+               text/javascript
                application/x-javascript
+               application/json
+               application/ld+json
+               application/schema+json
+               application/vnd.api+json
                text/xml
                application/xml
-               application/xml+rss
-               text/javascript;
+               application/xml+rss;
 
     include             /etc/nginx/mime.types;
     default_type        application/octet-stream;
