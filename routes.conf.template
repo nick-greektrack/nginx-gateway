@@ -10,18 +10,19 @@ location = /service/health {
     return 204;
 }
 
-#location ~ ^/api/(.*)$ {
-#    proxy_pass http://$SERVICE_API_HOST/api$request_uri;
-#}
+location ~ ^/api/(.*)$ {
+    set $upstream http://$SERVICE_API_HOST;
+    proxy_pass $upstream/api$request_uri;
+}
 
-#location ~ ^/oauth/(.*)$ {
-#    proxy_pass http://$SERVICE_API_HOST/oauth$request_uri;
-#}
+location ~ ^/oauth/(.*)$ {
+    set $upstream http://$SERVICE_API_HOST;
+    proxy_pass $upstream/oauth$request_uri;
+}
 
 location ~ ^/session/(.*)$ {
-    #proxy_pass http://$SERVICE_API_HOST/session$request_uri;
     set $upstream http://$SERVICE_API_HOST;
-    proxy_pass $upstream/session/csrf-cookie;
+    proxy_pass $upstream/session$request_uri;
 }
 
 location ~ ^/(.*)$ {
