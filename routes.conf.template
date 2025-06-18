@@ -11,21 +11,17 @@ location = /service/health {
 }
 
 location ~ ^/api/(.*)$ {
-    set $upstream http://$SERVICE_API_HOST;
-    proxy_pass $upstream/api$request_uri;
+    proxy_pass http://$SERVICE_API_HOST$request_uri;
 }
 
 location ~ ^/oauth/(.*)$ {
-    set $upstream http://$SERVICE_API_HOST;
-    proxy_pass $upstream/oauth$request_uri;
+    proxy_pass http://$SERVICE_API_HOST$request_uri;
 }
 
 location ~ ^/session/(.*)$ {
-    set $upstream http://$SERVICE_API_HOST;
-    proxy_pass $upstream/session$request_uri;
+    proxy_pass http://$SERVICE_API_HOST$request_uri;
 }
 
 location ~ ^/(.*)$ {
-    set $upstream http://$SERVICE_WEB_HOST;
-    proxy_pass $upstream$request_uri;
+    proxy_pass http://$SERVICE_WEB_HOST$request_uri;
 }
