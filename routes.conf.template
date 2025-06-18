@@ -22,6 +22,10 @@ location ~ ^/session/(.*)$ {
     proxy_pass http://$SERVICE_API_HOST$request_uri;
 }
 
+location ~ ^/app/(.*)$ {
+    proxy_pass http://$SERVICE_FRONTEND_HOST$request_uri;
+}
+
 location ~ ^/(.*)$ {
     proxy_pass http://$SERVICE_WEB_HOST$request_uri;
 }
