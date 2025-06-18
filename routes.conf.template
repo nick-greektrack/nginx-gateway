@@ -12,6 +12,14 @@ location ~ ^/api/(.*)$ {
     proxy_pass http://$SERVICE_API_HOST/api$request_uri;
 }
 
+location ~ ^/oauth/(.*)$ {
+    proxy_pass http://$SERVICE_API_HOST/oauth$request_uri;
+}
+
+location ~ ^/session/(.*)$ {
+    proxy_pass http://$SERVICE_API_HOST/session$request_uri;
+}
+
 location ~ ^/(.*)$ {
     proxy_pass http://$SERVICE_WEB_HOST$request_uri;
 }
