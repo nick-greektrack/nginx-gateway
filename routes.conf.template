@@ -1,10 +1,12 @@
 # Liveness probe
 location = /service/up {
+    access_log off;
     return 204;
 }
 
 # Health probe
 location = /service/health {
+    access_log off;
     return 204;
 }
 
