@@ -26,9 +26,10 @@ location ~ ^/session/(.*)$ {
 
 # Frontend (SPA) service routes
 
-#location ~ ^/app/(.*)$ {
-#    proxy_pass http://$SERVICE_FRONTEND_HOST$request_uri;
-#}
+location ~ ^/app/(.*)$ {
+    set $upstream http://$SERVICE_FRONTEND_HOST;
+    proxy_pass $upstream$request_uri;
+}
 
 # Web service routes
 
