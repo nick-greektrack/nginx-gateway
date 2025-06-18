@@ -1,5 +1,15 @@
+# Liveness probe
+location /service/up {
+    return 204;
+}
+
+# Health probe
+location /service/health {
+    return 204;
+}
+
 location ~ ^/api/(.*)$ {
-    proxy_pass http://$SERVICE_API_HOST/api/$request_uri;
+    proxy_pass http://$SERVICE_API_HOST/api$request_uri;
 }
 
 location ~ ^/(.*)$ {
