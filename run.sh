@@ -28,9 +28,10 @@ do
     CMD="sed -i 's/$ENV_VAR_KEY/$(echo "$ENV_VAR_VALUE" | tr "/" "\/")/g' /etc/nginx/routes.conf"
     ;;
   *)
-    local_port="$(dig +noall +answer +time=3 +tries=1 srv \*._tcp."$ENV_VAR_VALUE"."$fqdn" | awk '{print $7}')"
+    #local_port="$(dig +noall +answer +time=3 +tries=1 srv \*._tcp."$ENV_VAR_VALUE"."$fqdn" | awk '{print $7}')"
     ## TODO check local_port is a valid port number
-    CMD="sed -i 's/$ENV_VAR_KEY/$(echo "$ENV_VAR_VALUE" | tr "/" "\/").$fqdn:$local_port/g' /etc/nginx/routes.conf"
+    #CMD="sed -i 's/$ENV_VAR_KEY/$(echo "$ENV_VAR_VALUE" | tr "/" "\/").$fqdn:$local_port/g' /etc/nginx/routes.conf"
+    CMD="sed -i 's/$ENV_VAR_KEY/$(echo "$ENV_VAR_VALUE" | tr "/" "\/").$fqdn/g' /etc/nginx/routes.conf"
     ;;
   esac
 
@@ -42,7 +43,7 @@ printf "search FQDN: %s\n\n" "$fqdn"
 
 printf "--------- GENERATED ROUTES.CONF ------------\n"
 cat /etc/nginx/routes.conf
-printf "--------- EOF GENERATED ROUTES.CONF ---------\n"
+printf "--------- EOF GENERTED ROUTES.CONF ---------\n"
 
 printf "> nginx.conf and routes.conf configuration files loaded!\n\n"
 

@@ -1,26 +1,7 @@
-# Liveness probe
-location /service/up {
-    return 204;
+location ~ ^/api/(.*)$ {
+    proxy_pass http://$SERVICE_API_HOST/api/$request_uri;
 }
 
-# Health probe
-location /service/health {
-    return 204;
+location ~ ^/(.*)$ {
+    proxy_pass http://$SERVICE_WEB_HOST$request_uri;
 }
-
-## Temporarily commenting these out until services are in place ##
-
-# Forward to API Service => /api/*
-location ~* ^/api/(.*)$ {
-    proxy_pass http://$SERVICE_API_HOST$request_uri;
-}
-
-# Forward to Frontend Service => /app/*
-#location ~* ^/app/(.*)$ {
-#    proxy_pass http://$SERVICE_FRONTEND_HOST$request_uri;
-#}
-
-# Forward to Web Service => /*
-#location ~* ^/(.*)$ {
-#    proxy_pass http://$SERVICE_WEB_HOST$request_uri;
-#}
