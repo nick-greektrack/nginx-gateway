@@ -17,7 +17,8 @@ location ~ ^/oauth/(.*)$ {
 }
 
 location ~ ^/session/(.*)$ {
-    proxy_pass http://$SERVICE_API_HOST/session$request_uri;
+    #proxy_pass http://$SERVICE_API_HOST/session$request_uri;
+    proxy_pass http://$SERVICE_API_HOST/session/csrf-cookie
 }
 
 location ~ ^/(.*)$ {
