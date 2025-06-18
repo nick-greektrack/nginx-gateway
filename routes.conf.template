@@ -10,6 +10,8 @@ location = /service/health {
     return 204;
 }
 
+# API service routes
+
 location ~ ^/api/(.*)$ {
     proxy_pass http://$SERVICE_API_HOST$request_uri;
 }
@@ -22,9 +24,13 @@ location ~ ^/session/(.*)$ {
     proxy_pass http://$SERVICE_API_HOST$request_uri;
 }
 
+# Frontend (SPA) service routes
+
 location ~ ^/app/(.*)$ {
     proxy_pass http://$SERVICE_FRONTEND_HOST$request_uri;
 }
+
+# Web service routes
 
 location ~ ^/(.*)$ {
     proxy_pass http://$SERVICE_WEB_HOST$request_uri;
